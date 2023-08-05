@@ -19,9 +19,14 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $id)
     {
-        return view("User/create");
+        if(isset($id)){
+            return view("User/create");
+        }else{
+            $user = User::find($id);
+            return View("User/create", compact('user'));
+        }
     }
 
     /**
@@ -43,7 +48,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::find($id);
+        return View("User/show", compact('user'));
     }
 
     /**
@@ -51,7 +57,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        return View("User/create", compact('user'));
     }
 
     /**
@@ -59,7 +66,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
     }
 
     /**
