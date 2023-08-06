@@ -19,15 +19,17 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(string $id)
+    public function create(string $id = null)
     {
-        if(isset($id)){
+        if(!isset($id)){
             return view("User/create");
         }else{
             $user = User::find($id);
             return View("User/create", compact('user'));
         }
     }
+
+    
 
     /**
      * Store a newly created resource in storage.
@@ -66,7 +68,12 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->password = $request->password;
+        $user->email= $request->email;
+        $user->save();
+        return redirect("/users");
     }
 
     /**

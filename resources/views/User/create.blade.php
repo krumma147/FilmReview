@@ -4,10 +4,10 @@
 
 @if(!isset($user))
 @section('content')
-<div class="container">
+<div class="container justify-content-center mt-4">
     <form action="/users" method="POST">
     @csrf
-        <div class="mb-3">
+        <div class="d-inline mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text"
                 class="form-control" name="name" aria-describedby="helpId" placeholder="">
@@ -40,7 +40,6 @@
                     <label class="form-check-label" for="btncheck2">User</label>
                 </div>
             </div>
-            <small id="helpId" class="form-text text-muted">Help text</small>
         </div>
     
         <div class="d-grid gap-2">
