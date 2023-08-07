@@ -17,6 +17,8 @@ class Movie extends Model
         "overview",
         "origin_country",
         "language",
-        "revenue"
+        "rate",
+        'release_date',
+        'upload_date'
     ];
 }

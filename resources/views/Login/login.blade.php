@@ -22,8 +22,9 @@
 
     <div class="d-flex justify-content-center mt-4">
         <div class="d-inline">
-            <form action="" method="POST">
-
+            <form action="/login" method="POST">
+            @csrf
+            @method('POST')
                 <h1 class="text-center">Choose Account Type</h1>
 
                 <div class="form-group d-flex p-2">
@@ -46,12 +47,12 @@
 
                 <div class="form-group p-2">
                     <Label>UserName</Label>
-                    <input type="text" name="usn" value="" class="form-control">
+                    <input type="text" name="username" value="" class="form-control">
                 </div>
 
                 <div class="form-group p-2">
                     <Label>Password</Label>
-                    <input type="password" name="psw" value="" class="form-control">
+                    <input type="password" name="password" value="" class="form-control">
                 </div>
 
                 <div class="form-group p-2 text-center">
