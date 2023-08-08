@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string("title");
             $table->boolean("status");
-            $table->string("original_title");
             $table->string("overview");
-            $table->string("origin_country");
             $table->string("language");
-            $table->integer("revenue");
+            $table->integer("rating")->nullable();
+            $table->date("release_date")->nullable();
+            $table->string("image_url")->nullable();
             $table->timestamps();
         });
     }

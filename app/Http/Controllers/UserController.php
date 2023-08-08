@@ -57,11 +57,11 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        $user = User::find($id);
-        return View("User/create", compact('user'));
-    }
+    // public function edit(string $id)
+    // {
+    //     $user = User::find($id);
+    //     return View("User/create", compact('user'));
+    // }
 
     /**
      * Update the specified resource in storage.

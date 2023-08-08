@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('Login.login');
-});
+Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::resources(
-    ['users' => UserController::class,]
+    [
+        'users' => UserController::class,
+        'movies' => MovieController::class,
+    ]
 );
