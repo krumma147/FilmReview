@@ -20,4 +20,8 @@ class Movie extends Model
         'image_url',
         //'upload_date'
     ];
+
+    public function Categories(){
+        return $this->belongsToMany(Category::class);
+    }
 }

@@ -1,15 +1,15 @@
-<!-- @extends('Layout.homepage') -->
+@extends('Layout.basiclayout')
 @section('title','Add New Movie')
 
-<div class="container justify-content-center mt-4">
 @section('content')
-@if(!isset($movie))
-<!-- Create New -->
+<div class="container justify-content-center mt-4">
     <script>
         $(function(){
             $('#datepicker').datepicker();
         });
     </script>
+@if(!isset($movie))
+<!-- Create New -->
 
     <form action="/movies" method="POST">
     @csrf
@@ -27,6 +27,15 @@
                 <input type="text"
                     class="form-control" name="overview" aria-describedby="helpId">
                 <small id="helpId" class="form-text text-muted">Help text</small>
+            </div>
+
+            <div class="mb-2">
+                <label for="category_id">Category: </label>
+                <select class="select" name="Categories[]" id="category_id" multiple>
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="mb-2">
@@ -49,7 +58,7 @@
             </div>
 
             <div class="mb-2">
-                <label for="release_date" class="col-1 col-form-label">Release Date</label>
+                <label for="release_date" class="form-label">Release Date</label>
                 <div class="col-5">
                     <div class="input-group date" id="datepicker">
                         <input type="date" class="form-control" id="date" name="release_date" />
@@ -106,7 +115,7 @@
                 </div>
 
                 <div class="form-check form-check-inline" role="group" aria-label="Basic checkbox toggle button group">
-                    <input type="radio" class="form-check-input" name="status" value="0" autocomplete="off" value="{{$movie->status}}" {{$movie->status == 1 ? 'checked' : ''}} />
+                    <input type="radio" class="form-check-input" name="status" value="0" autocomplete="off" {{$movie->status == 1 ? 'checked' : ''}} />
                     <label class="form-check-label" for="btncheck2">Unreleased</label>
                 </div>
             </div>

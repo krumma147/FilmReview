@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::all();
-        return view('movie.index', compact('movies'));
+        
+        return view('Movie.index', compact('movies'));
     }
 
     /**
@@ -21,7 +23,8 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return view('movie.create');
+        $categories = Category::all();
+        return view('Movie.create', compact('categories'));
     }
 
     /**
@@ -37,6 +40,7 @@ class MovieController extends Controller
         $movie->rating = $request->rating;
         $movie->release_date = $request->release_date;
         $movie->save();
+        $movie->categories()->attach($request->input('Categories'));
         return redirect('/movies');
     }
 
@@ -45,7 +49,8 @@ class MovieController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $movie= Movie::find($id);
+        return view('Movie.show', compact('movie'));
     }
 
     /**
@@ -54,7 +59,8 @@ class MovieController extends Controller
     public function edit(string $id)
     {
         $movie = Movie::find($id);
-        return view('movie.create', compact('movie'));
+        $categories = Category::all();
+        return view('Movie.create', compact('movie'), compact('categories'));
     }
 
     /**
@@ -70,6 +76,7 @@ class MovieController extends Controller
         $movie->rating = $request->rating;
         $movie->release_date = $request->release_date;
         $movie->image_url = $request->image_url;
+        $movie->Categories()->sync($request->categories);
         $movie->save();
         return redirect('/movies');
     }

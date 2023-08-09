@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -25,5 +26,6 @@ Route::resources(
     [
         'users' => UserController::class,
         'movies' => MovieController::class,
+        'categories' => CategoryController::class,
     ]
 );

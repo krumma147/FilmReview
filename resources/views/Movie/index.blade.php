@@ -10,9 +10,9 @@
                 <th scope="col">Status</th>
                 <th scope="col">Overview</th>
                 <th scope="col">Language</th>
+                <th scope="col">Categories</th>
                 <th scope="col">Rating</th>
-                <th scope="col">Release_date</th>
-                <th scope="col">Action</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
 
@@ -29,7 +29,15 @@
                     <td>{{$movie->overview}}</td>
                     <td>{{$movie->language}}</td>
                     <td>{{$movie->rating}}</td>
-                    <td>{{$movie->release_date}}</td>
+                    
+                    <td>
+                        @foreach($movie->Categories as $cat)
+                        <a href="/categories/{{$cat->id}}">
+                            {{$cat->name}}
+                        </a>
+                        @endforeach
+                    </td>
+
                     <td class="d-flex">
                         <input type="submit" value="Edit" class="btn btn-primary mt-2 me-2" onclick="return window.location.href='/movies/{{$movie->id}}/edit'" ></input>
                         <form action="movies/{{$movie->id}}" method="POST">
