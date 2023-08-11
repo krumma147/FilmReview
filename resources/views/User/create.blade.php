@@ -1,5 +1,5 @@
-@extends('Layout.homepage')
-@section('title','Add User')
+@extends('Layouts.AdminHome')
+@section('title','Edit User')
 
 
 @if(!isset($user))
@@ -98,3 +98,5 @@
 </div>
 @endsection
 @endif
+
+{{-- End File --}}

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
@@ -21,12 +23,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('Movie.Admin.index');
+});
+
+Route::get('/admin', function () {
+    return view('Movie.Admin.index');
+});
 
 Route::get('/login', function () {
     return view('Login.login');
 });
-
-//Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
 
 Route::resources(
     [

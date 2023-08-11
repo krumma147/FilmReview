@@ -1,4 +1,4 @@
-@extends('Layout.homepage')
+@extends('Layouts.homepage')
 @section('title','Categories')
 @section('content')
 <div class="table-responsive">
@@ -13,6 +13,7 @@
         </thead>
 
         <tbody>
+            @if(isset($categories))
             @foreach($categories as $cat)
                 <tr class="">
                     <td scope="row">{{$cat->id}}</td>
@@ -31,6 +32,9 @@
                     </td>
                 </tr>
             @endforeach
+            @else
+            <h2>The List Is Empty</h2>
+            @endif
         </tbody>
     </table>
 </div>

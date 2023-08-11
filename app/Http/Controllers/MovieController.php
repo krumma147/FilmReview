@@ -39,19 +39,15 @@ class MovieController extends Controller
         $movie->language = $request->language;
         $movie->rating = $request->rating;
         $movie->release_date = $request->release_date;
-        // if ($request->hasFile('image')) {
-            //$imageName = $image->getClientOriginalName(); // Get the original file name
-            //$image->storeAs('public/images', $image); // Store in 'storage/app/public/images' directory with the original name
-            // }
-        //$image = $request->image;
+
         $image = $request->file('image');
+        if($image){
+            $extension = $image->getClientOriginalExtension(); // Get the original file extension
+            $imagename = time() . '.' . $extension; // Combine with timestamp to create a unique file name
+            $image->move('images', $imagename);
+            $movie->image_url = $imagename;
+        }
         //dd($image);
-        $extension = $image->getClientOriginalExtension(); // Get the original file extension
-        $imagename = time() . '.' . $extension; // Combine with timestamp to create a unique file name
-        $image->move('images', $imagename);
-
-        $movie->image_url = $imagename;
-
         $movie->save();
         $movie->categories()->attach($request->input('Categories'));
         
@@ -90,14 +86,17 @@ class MovieController extends Controller
         $movie->rating = $request->rating;
         $movie->release_date = $request->release_date;
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imagePath = $image->store('images', 'public'); // Store in 'storage/app/public/images' directory
-            $movie->image_url = $imagePath;
+        $image = $request->file('image');
+        if ($image) {
+            $extension = $image->getClientOriginalExtension(); // Get the original file extension
+            $imagename = time() . '.' . $extension; // Combine with timestamp to create a unique file name
+            $image->move('images', $imagename);
+            $movie->image_url = $imagename;
         }
 
-        $movie->Categories()->sync($request->categories);
         $movie->save();
+        $movie->categories()->attach($request->input('Categories'));
+
         return redirect('/movies');
     }
 

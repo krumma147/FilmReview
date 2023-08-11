@@ -1,4 +1,4 @@
-@extends('Layout.homepage')
+@extends('Layouts.homepage')
 @section('title','User Detail')
 @section('content')
 <div class="card">

@@ -1,4 +1,4 @@
-@extends('Layout.basiclayout')
+@extends('Layouts.basiclayout')
 @section('title','Add New Category')
 
 <div class="container justify-content-center mt-4">
