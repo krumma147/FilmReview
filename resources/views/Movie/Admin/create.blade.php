@@ -11,7 +11,7 @@
 @if(!isset($movie))
 <!-- Create New -->
 
-    <form action="/movies" method="POST">
+    <form action="/movies" method="POST" enctype="multipart/form-data">
     @csrf
         <div class="d-inline mb-3">
             <h2 class="text-center">Add New Movie</h2>
@@ -73,8 +73,8 @@
             </div>
 
             <div class="mb-2">
-                <label for="image_url" class="form-label">Image</label>
-                <input type="file" class="form-control" name="image_url" aria-describedby="helpId">
+                <label for="image" class="form-label">Image</label>
+                <input type="file" class="form-control" name="image" accept="image/*" aria-describedby="helpId">
             </div>
 
         </div>
@@ -84,8 +84,9 @@
         </div>
     </form>
     @else
+
 <!-- Editing -->
-    <form action="/movies/{{$movie->id}}" method="POST">
+    <form action="/movies/{{$movie->id}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <h2 class="text-center">Editing Movie</h2>
@@ -123,6 +124,13 @@
             <div class="mb-2">
                 <label for="rating" class="form-label">Movie Rating</label>
                 <input type="text" class="form-control" name="rating" aria-describedby="helpId" value="{{$movie->rating}}">
+            </div>
+
+
+
+            <div class="mb-2">
+                <label for="image" class="form-label">Image</label>
+                <input type="file" class="form-control" name="image" accept="image/*" aria-describedby="helpId" value="{{$movie->image_url}}">
             </div>
 
             <div class="mb-2">

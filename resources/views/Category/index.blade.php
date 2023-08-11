@@ -2,6 +2,7 @@
 @section('title','Categories')
 @section('content')
 <div class="table-responsive">
+    <input type="submit" value="Create" class="btn btn-success mt-2 me-2" onclick="return window.location.href='/categories/create'" ></input>
     <table class="table table-primary">
         <thead>
             <tr>

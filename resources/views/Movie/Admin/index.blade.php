@@ -2,6 +2,9 @@
 @section('title','Movie Review')
 @section('content')
 <div class="table-responsive">
+
+    <input type="submit" value="Create" class="btn btn-success mt-2 me-2" onclick="return window.location.href='/movies/create'" ></input>
+
     <table class="table table-primary">
         <thead>
             <tr>
@@ -10,7 +13,8 @@
                 <th scope="col">Status</th>
                 <th scope="col">Overview</th>
                 <th scope="col">Language</th>
-                <th scope="col">Categories</th>
+                <th scope="col">Categories</th> 
+                <th scope="col">Image</th> 
                 <th scope="col">Rating</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -28,7 +32,7 @@
                     <td>{{$movie->status}}</td>
                     <td>{{$movie->overview}}</td>
                     <td>{{$movie->language}}</td>
-                    <td>{{$movie->rating}}</td>
+                    
                     
                     <td>
                         @foreach($movie->Categories as $cat)
@@ -37,6 +41,12 @@
                         </a>
                         @endforeach
                     </td>
+
+                    <td>
+                        <img src="images/{{$movie->image_url}}" alt="{{$movie->name}} movie image" style="height: 50px; width: 50px" />
+                    </td>
+
+                    <td>{{$movie->rating}}</td>
 
                     <td class="d-flex">
                         <input type="submit" value="Edit" class="btn btn-primary mt-2 me-2" onclick="return window.location.href='/movies/{{$movie->id}}/edit'" ></input>

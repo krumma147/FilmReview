@@ -24,7 +24,7 @@
         <div class="d-inline">
             <form action="/login" method="POST">
             @csrf
-            @method('POST')
+            
                 <h1 class="text-center">Choose Account Type</h1>
 
                 <div class="form-group d-flex p-2">
