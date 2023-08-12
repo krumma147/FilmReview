@@ -1,3 +1,4 @@
+<base href="/public">
 @extends('Layouts.AdminHome')
 @section('title','Add New Movie')
 @section('content')

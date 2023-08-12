@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\RegisteredUserController;
+// use App\Http\Controllers\Auth\AuthenticatedSessionController;
+// use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
@@ -34,10 +34,11 @@ Route::get('/admin', function () {
 Route::get('/login', function () {
     return view('Login.login');
 });
-Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
-Route::post('/register', [RegisteredUserController::class, 'store'])->name('register');
-Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
+
+Route::get('/register', [AuthenticationController::class, 'index'])->name('register');
+Route::post('/register', [AuthenticationController::class, 'login']);
+Route::get('/login', [AuthenticationController::class, 'create'])->name('login');
+Route::post('/login', [AuthenticationController::class, 'store']);
 
 Route::resources(
     [

@@ -38,7 +38,7 @@
 				<table class="table table-hover text-nowrap">
                     @if(count($movies) == 0)
                         <h4 class="text-danger text-center">The List is empty</h4>
-                    @else
+                    @elsed
 
                     <thead>
 						<tr>

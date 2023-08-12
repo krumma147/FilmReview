@@ -1,47 +1,71 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/bb46d8f343.js" crossorigin="anonymous"></script>
+    <title>Login</title>
+</head>
+<body>
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+    <div class="d-flex justify-content-center mt-4">
+        <div class="d-inline">
+            <form action="/login" method="POST">
+            @csrf
+            
+                <h1 class="text-center">Choose Account Type</h1>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <div class="form-group d-flex p-2">
+                    <div class="p-1 border border-info border-4 m-1 rounded text-center">
+                        <label for="isUser">
+                            <img style="height: 200px; width: 200px" src="./images/user.png" alt="admin_image">
+                            <p>User</p>
+                            <input type="radio" id="isUser" name="logintype" value="User" checked   >
+                        </label>
+                    </div>
+
+                    <div class="p-1 border border-info border-4 m-1 rounded text-center">
+                        <label for="isAdmin">
+                            <img style="height: 200px; width: 200px" src="./images/admin.png" alt="admin_image">
+                            <p>Admin</p>
+                            <input type="radio" id="isAdmin" name="logintype" value="Admin">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group p-2">
+                    <Label>UserName</Label>
+                    <input type="text" name="username" value="" class="form-control">
+                </div>
+
+                <div class="form-group p-2">
+                    <Label>Password</Label>
+                    <input type="password" name="password" value="" class="form-control">
+                </div>
+
+                <div class="form-group p-2 text-center">
+                    <button type="submit" class="btn btn-primary btn-lg mb-3 " name="LoginBtn" value="Go">Login</button>
+                    <p>Do not have an account?<a href="/users/create">Click here.</a></p>
+                    <p>Go back to <a href="index.php">home page.</a></p>
+                </div>
+            </form>
         </div>
+        
+    </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+    
+</body>
+</html>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
