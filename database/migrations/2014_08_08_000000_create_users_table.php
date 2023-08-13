@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->unsignedBigInteger("userType")->default(1);
             $table->foreign("userType")->references('id')->on("roles")->onDelete('cascade');
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

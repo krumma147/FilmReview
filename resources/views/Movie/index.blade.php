@@ -36,7 +36,7 @@
 			</div>
 			<div class="card-body table-responsive p-0">								
 				<table class="table table-hover text-nowrap">
-                    @if(count($movies) == 0)
+                    @if(count($movies) == 0 || $movies == null)
                         <h4 class="text-danger text-center">The List is empty</h4>
                     @elsed
 

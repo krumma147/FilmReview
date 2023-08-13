@@ -1,71 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/bb46d8f343.js" crossorigin="anonymous"></script>
-    <title>Login</title>
-</head>
-<body>
+<x-guest-layout>
+    @if($errors->has('message'))
+    <div class="alert alert-danger">
+        {{ $errors->first('message') }}
+    </div>
+    @endif
+    <x-authentication-card>
+        <x-slot name="logo">
+            <x-authentication-card-logo />
+        </x-slot>
 
-    <div class="d-flex justify-content-center mt-4">
-        <div class="d-inline">
-            <form action="/login" method="POST">
+        <x-validation-errors class="mb-4" />
+
+        @if (session('status'))
+            <div class="mb-4 font-medium text-sm text-green-600">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        <form method="POST" action="{{ route('login') }}">
             @csrf
-            
-                <h1 class="text-center">Choose Account Type</h1>
 
-                <div class="form-group d-flex p-2">
-                    <div class="p-1 border border-info border-4 m-1 rounded text-center">
-                        <label for="isUser">
-                            <img style="height: 200px; width: 200px" src="./images/user.png" alt="admin_image">
-                            <p>User</p>
-                            <input type="radio" id="isUser" name="logintype" value="User" checked   >
-                        </label>
+            <div>
+                <x-label for="email" value="{{ __('Email') }}" />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="password" value="{{ __('Password') }}" />
+                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+            </div>
+
+            <div class="block mt-4">
+                <label for="remember_me" class="flex items-center">
+                    <x-checkbox id="remember_me" name="remember" />
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                </label>
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+
+                <x-button class="ml-4">
+                    {{ __('Log in') }}
+                </x-button>
+
+            </div>
+        </form>
+    </x-authentication-card>
+</x-guest-layout>
+
+{{-- <!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap 5 Login form Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-12 col-md-8 col-lg-6">
+            <div class="card bg-white">
+              <div class="card-body p-5">
+                <form class="mb-3 mt-md-4" action="{{ route('login') }}" method="POST">
+                @csrf
+                  <h2 class="fw-bold mb-2 text-uppercase ">Film Review</h2>
+                  <p class=" mb-5">Please enter your login and password!</p>
+                    @if($errors->has('message'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('message') }}
                     </div>
-
-                    <div class="p-1 border border-info border-4 m-1 rounded text-center">
-                        <label for="isAdmin">
-                            <img style="height: 200px; width: 200px" src="./images/admin.png" alt="admin_image">
-                            <p>Admin</p>
-                            <input type="radio" id="isAdmin" name="logintype" value="Admin">
-                        </label>
-                    </div>
+                    @endif
+                  <div class="mb-3">
+                    <label for="email" class="form-label ">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label ">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="*******">
+                  </div>
+                  <p class="small"><a class="text-primary" href="forget-password.html">Forgot password?</a></p>
+                  <div class="d-grid">
+                    <button class="btn btn-outline-dark" type="submit">Login</button>
+                  </div>
+                </form>
+                <div>
+                  <p class="mb-0  text-center">Don't have an account? <a href="register" class="text-primary fw-bold">Sign
+                      Up</a></p>
                 </div>
 
-                <div class="form-group p-2">
-                    <Label>UserName</Label>
-                    <input type="text" name="username" value="" class="form-control">
-                </div>
-
-                <div class="form-group p-2">
-                    <Label>Password</Label>
-                    <input type="password" name="password" value="" class="form-control">
-                </div>
-
-                <div class="form-group p-2 text-center">
-                    <button type="submit" class="btn btn-primary btn-lg mb-3 " name="LoginBtn" value="Go">Login</button>
-                    <p>Do not have an account?<a href="/users/create">Click here.</a></p>
-                    <p>Go back to <a href="index.php">home page.</a></p>
-                </div>
-            </form>
+              </div>
+            </div>
+          </div>
         </div>
-        
+      </div>
     </div>
 
-    
-</body>
-</html>
+  </body>
 
+</html> --}}

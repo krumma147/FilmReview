@@ -39,6 +39,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->usertype = $request->usertype;
+        $user->profile_photo_path = $request->profile_photo_path;
         $user->save();
         return redirect("/users");
     }
