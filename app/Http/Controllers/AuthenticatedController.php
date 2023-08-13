@@ -27,7 +27,7 @@ class AuthenticatedController extends Controller
             if (auth()->user()->userType == 1) {
                 return redirect("/")->withSuccess('Login successful!');
             } elseif (auth()->user()->userType == 2) {
-                return redirect("/movies")->withSuccess('Login successful!');
+                return redirect("/dashboard")->withSuccess('Login successful!');
             }
         }
         return redirect("login")->withErrors('Invalid credentials or account type!');
