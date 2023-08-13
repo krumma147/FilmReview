@@ -13,7 +13,7 @@
 				<div class="site-navigation">
 					<div class="row g-0 align-items-center">
 						<div class="col-2">
-							<a href="index.html" class="logo m-0 float-start">Blogy<span class="text-primary">.</span></a>
+							<a href="/" class="logo m-0 float-start">Blogy<span class="text-primary">.</span></a>
 						</div>
 						<div class="col-8 text-center">
 							<form action="#" class="search-form d-inline-block d-lg-none">
@@ -23,40 +23,68 @@
 
 							<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
 								<li class="active"><a href="index.html">Home</a></li>
-								<li class="has-children">
-									<a href="#">Pages</a>
-									<ul class="dropdown">
-										<li><a href="search-result.html">Search Result</a></li>
-										<li><a href="blog.html">Blog</a></li>
-										<li><a href="single.html">Blog Single</a></li>
-										<li><a href="category.html">Category</a></li>
-										<li><a href="about.html">About</a></li>
-										<li><a href="contact.html">Contact Us</a></li>
-										<li><a href="#">Menu One</a></li>
-										<li><a href="#">Menu Two</a></li>
-										<li class="has-children">
-											<a href="#">Dropdown</a>
-											<ul class="dropdown">
-												<li><a href="#">Sub Menu One</a></li>
-												<li><a href="#">Sub Menu Two</a></li>
-												<li><a href="#">Sub Menu Three</a></li>
-											</ul>
-										</li>
-									</ul>
+								<li><a href="about.html">About</a></li>
+								<li><a href="contact.html">Contact Us</a></li>
+								<li>
+									<a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
+										<span></span>
+									</a>
+									<form action="#" class="search-form d-none d-lg-inline-block">
+										<input type="text" class="form-control" placeholder="Search...">
+										<span class="bi-search"></span>
+									</form>
 								</li>
-								<li><a href="category.html">Culture</a></li>
-								<li><a href="category.html">Business</a></li>
-								<li><a href="category.html">Politics</a></li>
 							</ul>
 						</div>
 						<div class="col-2 text-end">
-							<a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
-								<span></span>
-							</a>
-							<form action="#" class="search-form d-none d-lg-inline-block">
-								<input type="text" class="form-control" placeholder="Search...">
-								<span class="bi-search"></span>
-							</form>
+							@if (Route::has('login'))
+								@auth
+									<div class="dropdown">
+										@if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+											<button class="btn btn-secondary dnavbar-toggler" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+												<img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+											</button>
+										@else
+											<button class="btn btn-secondary navbar-toggler" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+												{{ Auth::user()->name }}
+											</button>
+										@endif
+					
+										<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+												<!-- Account Management -->
+												<li>
+													<a class="dropdown-item" href="#">{{ __('Manage Account') }}</a>	
+												<li>
+					
+												<a class="dropdown-item" href="{{ route('profile.show') }}">
+													{{ __('Profile') }}
+												</a>
+					
+												@if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+													<a class="dropdown-item" href="{{ route('api-tokens.index') }}">
+														{{ __('API Tokens') }}
+													</a>
+												@endif
+					
+											<div class="border-t border-gray-200"></div>
+					
+												<!-- Authentication -->
+											<form method="POST" action="{{ route('logout') }}">
+											@csrf
+												<a class="dropdown-item" href="{{ route('logout') }}"
+														@click.prevent="$root.submit();">
+													{{ __('Log Out') }}
+												</a>
+											</form>
+										</ul>								  
+									</div>
+								@else
+										<a href="{{ route('login') }}" class=" text-light font-semibold hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+									@if (Route::has('register'))
+										<a href="{{ route('register') }}" class=" text-light ml-4 font-semibold  hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+									@endif
+								@endauth
+							@endif
 						</div>
 					</div>
 				</div>

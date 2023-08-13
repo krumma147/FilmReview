@@ -36,10 +36,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/', function () {
+        return view('welcome');
+    });
 });
+
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resources([
         'movies' => MovieController::class,
@@ -51,5 +52,6 @@ Route::get('/register', [AuthenticatedController::class, 'registration'])->name(
 Route::post('/register', [AuthenticatedController::class, 'create']);
 Route::get('/login', [AuthenticatedController::class, 'index'])->name('login');
 Route::post('/login', [AuthenticatedController::class, 'login']);
+Route::post('/logout', [AuthenticatedController::class, 'signOut']);
 
 

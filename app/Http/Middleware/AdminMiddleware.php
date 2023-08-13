@@ -15,10 +15,15 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user() && auth()->user()->userType === 1) {
-            return $next($request);
-        }
-    
-        return redirect()->route('dashboard')->withErrors('Access denied.');
+        return $next($request);
     }
+
+    // public function handle(Request $request, Closure $next): Response
+    // {
+    //     if (auth()->user() && auth()->user()->userType === 1) {
+    //         return $next($request);
+    //     }
+    
+    //     return redirect()->route('dashboard')->withErrors('Access denied.');
+    // }
 }
