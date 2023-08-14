@@ -1,6 +1,22 @@
-@extends('Layouts.homepage')
+@extends('Layouts.AdminHome')
 @section('title','Categories')
 @section('content')
+
+<section class="content-header">					
+    <div class="container-fluid my-2">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Movies</h1>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a href="/movies/create" class="btn btn-primary">New Film</a>
+                {{-- <input type="submit" value="Create" class="btn btn-primary" onclick="return window.location.href='/movies/create'" ></input> --}}
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
 <div class="table-responsive">
     <input type="submit" value="Create" class="btn btn-success mt-2 me-2" onclick="return window.location.href='/categories/create'" ></input>
     <table class="table table-primary">
@@ -39,3 +55,4 @@
     </table>
 </div>
 @endsection
+

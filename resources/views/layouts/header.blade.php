@@ -1,10 +1,10 @@
 <div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
+	<div class="site-mobile-menu-header">
+		<div class="site-mobile-menu-close">
+			<span class="icofont-close js-menu-toggle"></span>
 		</div>
-		<div class="site-mobile-menu-body"></div>
+	</div>
+	<div class="site-mobile-menu-body"></div>
 </div>
 
 <div class="site-nav">
@@ -73,7 +73,7 @@
 										@csrf
 											<a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 												{{ __('Log Out') }}
-    										</a>
+											</a>
 										</form>
 										
 									</ul>								  

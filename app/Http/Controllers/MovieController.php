@@ -11,10 +11,15 @@ class MovieController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct(){
+        $this->middleware('auth');
+        $this->middleware('checkrole');
+    }
+    
     public function index()
     {
         $movies = Movie::all();
-        dd($movies); // Add this line to debug
+        //dd($movies); // Add this line to debug
         return view('Movie.index', compact('movies'));
     }
 

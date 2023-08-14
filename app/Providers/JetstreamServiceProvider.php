@@ -24,9 +24,6 @@ class JetstreamServiceProvider extends ServiceProvider
         $this->configurePermissions();
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
-        // Fortify::loginView(function () {
-        //     return view('auth.login');
-        // });
     }
 
     /**
@@ -34,12 +31,6 @@ class JetstreamServiceProvider extends ServiceProvider
      */
     protected function configurePermissions(): void
     {
-        // $user = User::where('email', $request->email)->first();
-
-        // if ($user &&
-        //     Hash::check($request->password, $user->password)) {
-        //     return $user;
-        // }
         Jetstream::defaultApiTokenPermissions(['read']);
 
         Jetstream::permissions([

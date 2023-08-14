@@ -29,22 +29,6 @@
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
-            <div class="form-group d-flex p-2">
-                <div class="p-1 border border-info text-center">
-                    <label for="isUser">
-                        <p>User</p>
-                        <input type="radio" id="isUser" name="userType" value="1" checked>
-                    </label>
-                </div>
-
-                <div class="p-1 border border-info text-center">
-                    <label for="isAdmin">
-                        <p>Admin</p>
-                        <input type="radio" id="isAdmin" name="userType" value="2">
-                    </label>
-                </div>
-            </div>
-
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-label for="terms">
