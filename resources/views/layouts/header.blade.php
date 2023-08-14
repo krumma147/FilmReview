@@ -73,7 +73,7 @@
 										@csrf
 											<a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 												{{ __('Log Out') }}
-											</a>
+    										</a>
 										</form>
 										
 									</ul>								  

@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
 class CheckRole
 {
@@ -13,12 +14,17 @@ class CheckRole
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->user()->userType == 2) {
+        if (Auth()->user()->userType != 2) {
             return redirect('/login');
         }
     
         return $next($request);
+        // if (auth()->check() && auth()->user()->userType == $role) {
+        //     return redirect('/login');
+        // }
+
+        // return $next($request);
     }
 }
