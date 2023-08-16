@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
+
 class HomeController extends Controller
 {
     public function index(){
-        return view('welcome');
+        $topMovies = Movie::orderBy('rating', 'desc')
+            ->take(6)
+            ->get();
+        return view('welcome', compact('topMovies'));
     }
 
     public function login(){

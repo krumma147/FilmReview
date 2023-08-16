@@ -24,4 +24,8 @@ class Movie extends Model
     public function Categories(){
         return $this->belongsToMany(Category::class);
     }
+
+    public function Posts(){
+        return $this->hasMany(Post::class);
+    }
 }

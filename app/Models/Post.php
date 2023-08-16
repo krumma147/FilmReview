@@ -14,4 +14,12 @@ class Post extends Model
         'dayUpload',
         'rating',
     ];
+
+    public function movie(){
+        return $this->belongsTo(Movie::class);
+    }
+
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
 }

@@ -23,12 +23,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'login'])->middleware("auth");
 
-// Route::get('/register', [AuthenticationController::class, 'index'])->name('register');
-// Route::post('/register', [AuthenticationController::class, 'login']);
-// Route::get('/login', [AuthenticationController::class, 'create'])->name('login');
-// Route::post('/login', [AuthenticationController::class, 'store']);
-
-
 Route::resources([
         'users' => UserController::class,
         'movies' => MovieController::class,

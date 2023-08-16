@@ -114,4 +114,12 @@ class MovieController extends Controller
         $movie->delete();
         return redirect('/movies');
     }
+
+    public function highestRate(){
+        $topMovies = Movie::orderBy('rating', 'desc')
+            ->take(6)
+            ->get();
+
+        return view('layouts.MovieCarousel', compact('topMovies'));
+    }
 }

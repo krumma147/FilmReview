@@ -21,10 +21,5 @@ class CheckRole
         }
     
         return $next($request);
-        // if (auth()->check() && auth()->user()->userType == $role) {
-        //     return redirect('/login');
-        // }
-
-        // return $next($request);
     }
 }
