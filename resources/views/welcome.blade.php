@@ -58,13 +58,13 @@
 		<div class="container">
 			<div class="row mb-4">
 				<div class="col-sm-6">
-					<h2 class="posts-entry-title">Highest</h2>
+					<h2 class="posts-entry-title">Recent Posts</h2>
 				</div>
 				<div class="col-sm-6 text-sm-end"><a href="category.html" class="read-more">View All</a></div>
 			</div>
 			<div class="row g-3">
 				<div class="col">
-					@include('layouts.MovieCarousel')
+					@include('layouts.PostsCarousel')
 				</div>
 			</div>
 		</div>

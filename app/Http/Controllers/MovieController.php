@@ -18,7 +18,7 @@ class MovieController extends Controller
     
     public function index()
     {
-        $movies = Movie::all();
+        $movies = Movie::paginate(10); // 10 movies per page
         //dd($movies); // Add this line to debug
         return view('Movie.index', compact('movies'));
     }
@@ -100,7 +100,8 @@ class MovieController extends Controller
         }
 
         $movie->save();
-        $movie->categories()->attach($request->input('Categories'));
+        $categories = $request->input('Categories');
+        $movie->categories()->attach($categories);
 
         return redirect('/movies');
     }
@@ -115,11 +116,4 @@ class MovieController extends Controller
         return redirect('/movies');
     }
 
-    public function highestRate(){
-        $topMovies = Movie::orderBy('rating', 'desc')
-            ->take(6)
-            ->get();
-
-        return view('layouts.MovieCarousel', compact('topMovies'));
-    }
 }

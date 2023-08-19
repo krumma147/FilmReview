@@ -55,18 +55,17 @@
 					</thead>
 					<tbody>
                         @foreach($movies as $movie)
-                        <tr class="text-center">
+                        <tr>
                             <td scope="row">{{$movie->id}}</td>
                             <td>
                                 <a href="/movies/{{$movie->id}}">
                                     {{$movie->title}}
                                 </a>
                             </td>
-                            <td>{{$movie->status}}</td>
-                            <td>{{$movie->overview}}</td>
+                            <td>{{$movie->status ? "Released" : "Unreleased"}}</td>
+                            <td class="text-break">{{$movie->overview}}</td>
                             <td>{{$movie->language}}</td>
-                            
-                            
+
                             <td>
                                 @foreach($movie->Categories as $cat)
                                 <a href="/categories/{{$cat->id}}">
@@ -95,17 +94,11 @@
 					</tbody>
 				</table>										
 			</div>
-			<div class="card-footer clearfix">
-				<ul class="pagination pagination m-0 float-right">
-					<li class="page-item"><a class="page-link" href="#">«</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">»</a></li>
-				</ul>
-			</div>
 		</div>
 	</div>
+    <div class="pagination">
+        {{ $movies->links() }}
+    </div>
 					<!-- /.card -->
 </section>
 @endsection

@@ -20,6 +20,27 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
 
 	</head>
+	<style>
+		td{
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 200px;
+		}
+		
+		.pagination .page-item.active .page-link {
+		background-color: #007bff;
+		border-color: #007bff;
+		height: 5rem;
+		width: 100px;
+	}
+	
+		/* Style for the hovered page button */
+		.pagination .page-item .page-link:hover {
+			background-color: #f8f9fa;
+			border-color: #f8f9fa;
+		}
+	</style>
 	<body class="hold-transition sidebar-mini">
 		<!-- Site wrapper -->
 		<div class="wrapper">
@@ -64,5 +85,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
     </script>
+
+<script>
+	$(function(){
+		$('#datepicker').datepicker();
+	});
+	
+	var slider = document.getElementById("myRange");
+	var output = document.getElementById("rangeValue");
+	output.innerHTML = slider.value; // Display the default slider value
+
+	// Update the current slider value (each time you drag the slider handle)
+	slider.oninput = function() {
+		output.innerHTML = "Value: " + this.value;
+	}
+</script>
 	</body>
 </html>

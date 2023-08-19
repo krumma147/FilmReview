@@ -3,14 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Post;
+use App\Models\User;
 
 class HomeController extends Controller
 {
-    public function index(){
-        $topMovies = Movie::orderBy('rating', 'desc')
+    public function index(MovieController $movieController){
+        $topMovies = Movie::orderBy('release_date', 'desc')
             ->take(6)
             ->get();
-        return view('welcome', compact('topMovies'));
+
+        $posts = Post::orderBy('created_at', 'desc')
+            ->take(6)
+            ->get();
+        $users = User::all();
+        $authorIds = $posts->pluck('author');
+        $authors = User::whereIn('id', $authorIds)->get();
+        return view('welcome', compact('topMovies', 'posts', 'authors'));
     }
 
     public function login(){

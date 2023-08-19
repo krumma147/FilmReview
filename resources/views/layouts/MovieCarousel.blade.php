@@ -33,36 +33,41 @@
 		transform: translateX(0);
 	}
 </style>
-@if( isset($topMovies) && count($topMovies) > 1 )
+@if( isset($topMovies) && count($topMovies) > 0 )
     <div class="container text-center my-3">
         <div class="row mx-auto my-auto justify-content-center">
             <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" role="listbox">
+                    @foreach ($topMovies as $index => $movie)
+                    @if($index == 0)
                     <div class="carousel-item active">
                         <div class="col-md-3">
                             <div class="card">
                                 <div class="card-img">
-                                    <img src="https://via.placeholder.com/700x500.png/CB997E/333333?text=1" class="img-fluid">
+                                    <img src="images/{{$movie->image_url}}" class="img-fluid" style="width: 10rem; height: 15rem">
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title">Slide 1</h4>
+                                    <h4 class="card-title">{{$movie->title}}</h4>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @foreach ($topMovies as $index => $movie)
+                    @else
                         <div class="carousel-item">
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src="{{$movie->image_url}}" class="img-fluid">
+                                        <img src="images/{{$movie->image_url}}" class="img-fluid" style="width: 10rem; height: 15rem">
                                     </div>
                                     <div class="card-body">
-                                        <h4 class="card-title">{{$movie->title}}</h4>
+                                        <a href="">
+                                            <h4 class="card-title">{{$movie->title}}</h4>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    @endif
                     @endforeach
                 </div>
                 <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
@@ -79,6 +84,17 @@
         <h4>Nothing to show yet!</h4>
     </div>
 @endif
+
+{{-- @foreach ($movies as $index => $movie)
+        <div class="card">
+            <div class="card-img">
+                <img src="{{$movie->image_url}}" class="img-fluid">
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">{{$movie->title}}</h4>
+            </div>
+        </div>
+        @endforeach --}}
 
 <script>
     let items = document.querySelectorAll('.carousel .carousel-item')

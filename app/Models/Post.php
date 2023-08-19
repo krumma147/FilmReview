@@ -13,6 +13,8 @@ class Post extends Model
         'content',
         'dayUpload',
         'rating',
+        'movie',
+        'author'
     ];
 
     public function movie(){

@@ -20,51 +20,66 @@
 <section class="content">
     <!-- Default box -->
 <div class="container-fluid">
-<div class="card">
-<div class="card-header">
-<div class="card-tools">
-    <div class="input-group input-group" style="width: 250px;">
-        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-    
-        <div class="input-group-append">
-            <button type="submit" class="btn btn-default">
-            <i class="fas fa-search"></i>
-            </button>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-tools">
+                <div class="input-group input-group" style="width: 250px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    </div>
+            </div>
         </div>
+        <div class="card-body table-responsive p-0">								
+            <table class="table table-hover text-nowrap">
+                @if(count($categories) == 0 || $categories == null)
+                    <h4 class="text-danger text-center">The List is empty</h4>
+                @else
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($categories as $cat)
+                        <tr>
+                            <td scope="col">{{$cat->id}}</td>
+                            <td scope="col">
+                                <a href="/categories/{{$cat->id}}">
+                                    {{$cat->name}}
+                                </a>
+                                </td>
+                            <td scope="col" class="d-flex">
+                                <input type="submit" value="Edit" class="btn btn-primary mt-2 me-2" onclick="return window.location.href='/categories/{{$cat->id}}/edit'" ></input>
+                                <form action="categories/{{$cat->id}}" method="POST">
+                                        @csrf
+                                    @method('DELETE')
+                                    <input type="submit" value="Delete" class="btn btn-danger mt-2" onclick="return confirm('Are you sure?')" ></input>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    @endif
+                </tbody>
+            </table>
         </div>
+        <div class="card-footer clearfix">
+            <ul class="pagination pagination m-0 float-right">
+                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">»</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
-</div>
-<div class="card-body table-responsive p-0">								
-<table class="table table-hover text-nowrap">
-    @if(count($categories) == 0 || $categories == null)
-        <h4 class="text-danger text-center">The List is empty</h4>
-    @else
-<thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Actions</th>
-    </tr>
-</thead>
-<tbody>
-    @foreach($categories as $cat)
-        <tr class="text-center">
-            <td scope="row">{{$cat->id}}</td>
-            <td>
-                <a href="/categories/{{$cat->id}}">
-                    {{$cat->name}}
-                </a>
-                </td>
-            <td class="d-flex">
-                <input type="submit" value="Edit" class="btn btn-primary mt-2 me-2" onclick="return window.location.href='/categories/{{$cat->id}}/edit'" ></input>
-                <form action="categories/{{$cat->id}}" method="POST">
-                        @csrf
-                     @method('DELETE')
-                    <input type="submit" value="Delete" class="btn btn-danger mt-2" onclick="return confirm('Are you sure?')" ></input>
-                </form>
-            </td>
-        </tr>
-    @endforeach
-</tbody>
-@endif
+</section>
+
 @endsection

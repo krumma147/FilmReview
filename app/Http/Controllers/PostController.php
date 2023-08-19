@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -11,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view("Post.index", compact('posts'));
     }
 
     /**
@@ -19,7 +22,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $movies = Movie::all();
+        return view("Post.create", compact('movies'));
     }
 
     /**
@@ -27,7 +31,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post();
+        $post->content = $request->content;
+        $post->uploadDate = $request->uploadDate;
+        $post->rating = $request->rating;
+        $post->movie = $request->movie;
+        $post->author=auth()->user()->id;
+        $post->save();
+        return redirect("posts");
     }
 
     /**
@@ -35,7 +46,8 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = Post::find($id);
+        return view("Post.create", compact('post'));
     }
 
     /**
@@ -43,7 +55,9 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::find($id);
+        $movies = Movie::all();
+        return view("Post.create", compact('post','movies'));
     }
 
     /**
@@ -51,7 +65,12 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Post::find($id);
+        $post->content = $request->content;
+        $post->uploadDate = $request->uploadDate;
+        $post->rating = $request->rating;
+        $post->save();
+        return redirect("posts");
     }
 
     /**
@@ -59,6 +78,8 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        return redirect("posts");
     }
 }
