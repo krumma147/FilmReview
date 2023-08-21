@@ -16,8 +16,15 @@ class MovieController extends Controller
         $this->middleware('checkrole');
     }
     
-    public function index()
+    public function index(Request $request)
     {
+        $searchKey = $request->input('searchKey');
+        if($searchKey){
+            $query = Movie::query();
+            $query->where('title', 'like', '%' . $searchKey . '%');
+            $movies = $query->paginate(10); // 10 movies per page
+        return view('Movie.index', compact('movies'));
+        }
         $movies = Movie::paginate(10); // 10 movies per page
         //dd($movies); // Add this line to debug
         return view('Movie.index', compact('movies'));

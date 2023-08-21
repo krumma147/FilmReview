@@ -69,6 +69,10 @@
 	<header>
 		@include('layouts.header')
 	</header>
+    
+    <section>
+        <h1>Movies Page</h1>
+    </section>
 
 	<!-- Start posts-entry -->
 	<section class="section posts-entry">
@@ -87,27 +91,21 @@
 		</div>
 	</section>
 	<!-- End posts-entry -->
-
+	<div>Grid system under here and Category</div>
 	<!-- Start posts-entry -->
-	{{-- <section class="section posts-entry">
+	<section class="section posts-entry">
 		<div class="container">
-			<div class="row mb-4">
-				<div class="col-sm-6">
-					<h2 class="posts-entry-title">Up Coming Movies</h2>
+			<div class="row">
+				<div class="col-md-3">
+					Category table here!
 				</div>
-				<div class="col-sm-6 text-sm-end"><a href="category.html" class="read-more">View All</a></div>
-			</div>
-			<div class="row g-3">
-				<div class="col">
-					@include('layouts.MovieCarousel')
+				<div class="col-md-9">
+					Grid system here!
 				</div>
 			</div>
 		</div>
-	</section> --}}
-	<!-- End posts-entry -->
-	
-	<!-- Start posts-entry -->
-	<section class="section posts-entry">
+	</section>
+	{{-- <section class="section posts-entry">
 		<div class="container">
 			<div class="row mb-4">
 				<div class="col-sm-6">
@@ -121,7 +119,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --}}
 
 	<div class="section bg-light">
 		<div class="container">

@@ -1,6 +1,6 @@
 <base href="/public">
 @extends('Layouts.AdminHome')
-@section('title','Add New Movie')
+@section('title','Add New Post')
 @section('content')
 
 <section class="content-header">					

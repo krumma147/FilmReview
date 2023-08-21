@@ -22,7 +22,8 @@
 						</form>
 
 						<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
-							<li class="active"><a href="index.html">Home</a></li>
+							<li class="active"><a href="/">Home</a></li>
+							<li class="active"><a href="/moviehome">Movies</a></li>
 							<li><a href="about.html">About</a></li>
 							<li><a href="contact.html">Contact Us</a></li>
 							<li>

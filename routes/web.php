@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'login'])->middleware("auth");
+Route::get('/moviehome', [HomeController::class, 'moviePage'])->middleware("auth");
 
 Route::resources([
         'users' => UserController::class,

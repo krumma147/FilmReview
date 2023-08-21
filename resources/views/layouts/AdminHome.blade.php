@@ -27,20 +27,25 @@
 			text-overflow: ellipsis;
 			max-width: 200px;
 		}
-		
-		.pagination .page-item.active .page-link {
-		background-color: #007bff;
-		border-color: #007bff;
-		height: 5rem;
-		width: 100px;
-	}
-	
-		/* Style for the hovered page button */
-		.pagination .page-item .page-link:hover {
-			background-color: #f8f9fa;
-			border-color: #f8f9fa;
+
+		.pagination {
+			display: flex;
+			justify-content: center;
+			list-style: none;
 		}
+		
+		.pagination nav div:last-child{
+			margin-top: 10px;
+			text-align: center;
+		}
+
+		.pagination nav div:last-child div:last-child{
+			display: none;
+		}
+		
 	</style>
+
+
 	<body class="hold-transition sidebar-mini">
 		<!-- Site wrapper -->
 		<div class="wrapper">
