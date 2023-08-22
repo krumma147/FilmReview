@@ -27,7 +27,7 @@
 	<link rel="stylesheet" href="css/flatpickr.min.css">
 
 
-	<title>Blogy &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
+	<title>Movies Home Page</title>
 </head>
 <style>
     @media (max-width: 767px) {
@@ -69,10 +69,6 @@
 	<header>
 		@include('layouts.header')
 	</header>
-    
-    <section>
-        <h1>Movies Page</h1>
-    </section>
 
 	<!-- Start posts-entry -->
 	<section class="section posts-entry">
@@ -85,22 +81,21 @@
 			</div>
 			<div class="row g-3">
 				<div class="col">
-					@include('layouts.RecentMovieCarousel')
+					@include('layouts.MovieCarousel')
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- End posts-entry -->
-	<div>Grid system under here and Category</div>
 	<!-- Start posts-entry -->
 	<section class="section posts-entry">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3">
-					Category table here!
+					@include('layouts.MoviePage.sideNav')
 				</div>
 				<div class="col-md-9">
-					Grid system here!
+					@include('layouts.MoviePage.grid')
 				</div>
 			</div>
 		</div>

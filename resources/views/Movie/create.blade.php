@@ -97,9 +97,9 @@
         
                                         <div class="mb-2">
                                             <label for="rating" class="form-label">Movie Rating</label>
-                                            <p id="valueDisplay">Value: </p>
-                                            <input type="range" class="form-range" min="0" max="5" step="0.5" value="0" name="rating" aria-describedby="helpId">
-                                        </div>
+                                            <input type="range" id="myRange" class="form-range" min="0" max="5" step="0.5" value="2" name="rating" aria-describedby="helpId">
+                                            <p id="rangeValue">Value: </p>
+                                        </div>  
                                     </div>
                                 </div>
                             </div>

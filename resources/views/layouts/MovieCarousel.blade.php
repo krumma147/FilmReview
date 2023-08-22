@@ -2,38 +2,38 @@
 <div id="carouselTopMovies" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       @foreach ($topMovies as $index => $movie)
-                      @if($index == 0)
-                      <div class="carousel-item active">
-                          <div class="col-md-3">
-                              <div class="card">
-                                  <div class="card-img">
-                                      <img src="images/{{$movie->image_url}}" class="img-fluid" style="width: 10rem; height: 15rem">
-                                  </div>
-                                  <div class="card-body">
-                                      <a href="">
-                                          <h4 class="card-title">{{$movie->title}}</h4>
-                                      </a>
-                                  </div>
-                              </div>
-                          </div>
+      @if($index == 0)
+      <div class="carousel-item active">
+          <div class="col-md-3 m-2"">
+              <div class="card">
+                  <div class="card-img">
+                      <img src="images/{{$movie->image_url}}" class="rounded mx-auto d-block" style="width: 10rem; height: 15rem">
+                  </div>
+                  <div class="card-body text-center">
+                      <a href="" >
+                          <h4 class="card-title">{{$movie->title}}</h4>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      @else
+          <div class="carousel-item">
+              <div class="col-md-3 m-2">
+                  <div class="card">
+                      <div class="card-img">
+                          <img src="images/{{$movie->image_url}}" class="rounded mx-auto d-block" style="width: 10rem; height: 15rem">
                       </div>
-                      @else
-                          <div class="carousel-item">
-                              <div class="col-md-3">
-                                  <div class="card">
-                                      <div class="card-img">
-                                          <img src="images/{{$movie->image_url}}" class="rounded mx-auto d-block" style="width: 10rem; height: 15rem">
-                                      </div>
-                                      <div class="card-body">
-                                          <a href="">
-                                              <h4 class="card-title">{{$movie->title}}</h4>
-                                          </a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      @endif
-                      @endforeach
+                      <div class="card-body text-center">
+                          <a href="">
+                              <h4 class="card-title">{{$movie->title}}</h4>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      @endif
+      @endforeach
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselTopMovies" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>

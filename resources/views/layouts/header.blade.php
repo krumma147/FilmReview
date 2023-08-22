@@ -24,7 +24,7 @@
 						<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
 							<li class="active"><a href="/">Home</a></li>
 							<li class="active"><a href="/moviehome">Movies</a></li>
-							<li><a href="about.html">About</a></li>
+							<li><a href="/about">About</a></li>
 							<li><a href="contact.html">Contact Us</a></li>
 							<li>
 								<a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
@@ -53,9 +53,11 @@
 				
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 											<!-- Account Management -->
+											@if(Auth::user()->userType==2)
 											<li>
-												<a class="dropdown-item" href="#">{{ __('Manage Account') }}</a>	
+												<a class="dropdown-item" href="/movies">{{ __('Admin Page') }}</a>	
 											<li>
+											@endif
 				
 											<a class="dropdown-item" href="{{ route('profile.show') }}">
 												{{ __('Profile') }}

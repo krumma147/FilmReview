@@ -13,7 +13,7 @@ class MovieController extends Controller
      */
     public function __construct(){
         $this->middleware('auth');
-        $this->middleware('checkrole');
+        $this->middleware('checkrole')->only('show');
     }
     
     public function index(Request $request)
