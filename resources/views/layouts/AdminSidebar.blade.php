@@ -33,6 +33,13 @@
                         <i class="nav-icon  far fa-file-alt"></i>
                         <p>Post</p>
                     </a>
+                </li>			
+
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        <i class="nav-icon  far fa-file-alt"></i>
+                        <p>Movie Page</p>
+                    </a>
                 </li>							
             </ul>
         </nav>

@@ -61,7 +61,7 @@
                                 </a>
                             </td>
                             <td>{{$p->uploadDate}}</td>
-                            <td>{{$p->movie}}</td>
+                            <td>{{$p->movie_id}}</td>
                             <td>{{$p->Rating}}</td>
                             <td>{{$p->author}}</td>
 

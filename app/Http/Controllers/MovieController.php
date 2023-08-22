@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Movie;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MovieController extends Controller
 {
@@ -13,7 +15,7 @@ class MovieController extends Controller
      */
     public function __construct(){
         $this->middleware('auth');
-        $this->middleware('checkrole')->only('show');
+        $this->middleware('checkrole');
     }
     
     public function index(Request $request)
@@ -109,7 +111,6 @@ class MovieController extends Controller
         $movie->save();
         $categories = $request->input('Categories');
         $movie->categories()->attach($categories);
-
         return redirect('/movies');
     }
 

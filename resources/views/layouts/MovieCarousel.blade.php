@@ -4,13 +4,13 @@
       @foreach ($topMovies as $index => $movie)
       @if($index == 0)
       <div class="carousel-item active">
-          <div class="col-md-3 m-2"">
+          <div class="col-md-3 m-2">
               <div class="card">
                   <div class="card-img">
                       <img src="images/{{$movie->image_url}}" class="rounded mx-auto d-block" style="width: 10rem; height: 15rem">
                   </div>
                   <div class="card-body text-center">
-                      <a href="" >
+                      <a href="moviedetail/{{$movie->id}}" >
                           <h4 class="card-title">{{$movie->title}}</h4>
                       </a>
                   </div>
@@ -25,7 +25,7 @@
                           <img src="images/{{$movie->image_url}}" class="rounded mx-auto d-block" style="width: 10rem; height: 15rem">
                       </div>
                       <div class="card-body text-center">
-                          <a href="">
+                          <a href="moviedetail/{{$movie->id}}">
                               <h4 class="card-title">{{$movie->title}}</h4>
                           </a>
                       </div>

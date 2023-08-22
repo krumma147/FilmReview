@@ -11,6 +11,10 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $posts = Post::paginate(10); // 10 movies per page
@@ -35,7 +39,7 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->uploadDate = $request->uploadDate;
         $post->rating = $request->rating;
-        $post->movie = $request->movie;
+        $post->movie_id = $request->movie;
         $post->author=auth()->user()->id;
         $post->save();
         return redirect("posts");

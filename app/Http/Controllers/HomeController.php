@@ -6,7 +6,9 @@ use App\Models\Category;
 use App\Models\Movie;
 use App\Models\Post;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -31,24 +33,27 @@ class HomeController extends Controller
     }
 
     public function moviePage(){
-        // $topMovies = $this->getMovies();
+        $topMovies = $this->getMovies();
         $posts = $this->getPosts();
         $authors = $this->getAuthors();
         $recentMovies = $this->getRecentMovies();
         $categories = $this->getCategories();
         $movies = $this->getAllMovies();
-        return view('layouts.MoviePage.home', compact('topMovies', 'authors', 'recentMovies', 'categories', 'movies'));
+        return view('MoviePage', compact('topMovies', 'authors', 'recentMovies', 'categories', 'movies'));
     }
 
     public function MovieDetail(string $id){
-        $posts = $this->getPosts();
+        $movie = Movie::find($id);
+        if (!$movie) {
+            return redirect()->route('moviehome')->with('error', 'Movie not found');
+        }
+        $posts = $movie->posts()->get();
         $authors = $this->getAuthors();
-        $movie = $this->getMovie($id);
-        return view('MovieDetail', compact('authors','movie', 'posts'));
+        return view('MovieDetail', compact('movie', 'posts', 'authors'));
     }
 
     public function filterMovies(Request $request)
-{
+    {
     $categories = $this->getCategories();
     $topMovies = $this->getMovies();
     $categoryIds = $request->input('categories');
@@ -58,8 +63,21 @@ class HomeController extends Controller
         });
     })->paginate(10);
 
-    return view('layouts.MoviePage.home', compact('filteredMovies','categories', 'topMovies'));
-}
+    return view('MoviePage', compact('filteredMovies','categories', 'topMovies'));
+    }
+
+
+    public function createReview(Request $request, string $movieId){
+        $post = new Post();
+        $post->content = $request->content;
+        $post->uploadDate = Carbon::now();
+        $post->rating = $request->rating;
+        $post->movie = $movieId;
+        $post->author = Auth::user()->id;
+        $post->save();
+        return redirect('/moviedetail/'.$movieId);
+    }
+
 
     public function about(){
         return view('about');

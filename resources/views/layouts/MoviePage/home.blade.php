@@ -27,7 +27,7 @@
 	<link rel="stylesheet" href="css/flatpickr.min.css">
 
 
-	<title>Movies Home Page</title>
+	<title>@yield('title')</title>
 </head>
 <style>
     @media (max-width: 767px) {
@@ -70,53 +70,9 @@
 		@include('layouts.header')
 	</header>
 
-	<!-- Start posts-entry -->
-	<section class="section posts-entry">
-		<div class="container">
-			<div class="row mb-4">
-				<div class="col-sm-6">
-					<h2 class="posts-entry-title">Recently Added</h2>
-				</div>
-				<div class="col-sm-6 text-sm-end"><a href="category.html" class="read-more">View All</a></div>
-			</div>
-			<div class="row g-3">
-				<div class="col">
-					@include('layouts.MovieCarousel')
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End posts-entry -->
-	<!-- Start posts-entry -->
-	<section class="section posts-entry">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3">
-					@include('layouts.MoviePage.sideNav')
-				</div>
-				<div class="col-md-9">
-					@include('layouts.MoviePage.grid')
-				</div>
-			</div>
-		</div>
-	</section>
-	{{-- <section class="section posts-entry">
-		<div class="container">
-			<div class="row mb-4">
-				<div class="col-sm-6">
-					<h2 class="posts-entry-title">Recent Posts</h2>
-				</div>
-				<div class="col-sm-6 text-sm-end"><a href="category.html" class="read-more">View All</a></div>
-			</div>
-			<div class="row g-3">
-				<div class="col">
-					@include('layouts.PostsCarousel')
-				</div>
-			</div>
-		</div>
-	</section> --}}
+	@yield('content')
 
-	<div class="section bg-light">
+	{{-- <div class="section bg-light">
 		<div class="container">
 
 			<div class="row mb-4">
@@ -169,7 +125,7 @@
 			</div>
 
 		</div>
-	</div>
+	</div> --}}
 
 
 	<footer class="site-footer">
@@ -196,6 +152,16 @@
     <script src="js/navbar.js"></script>
     <script src="js/counter.js"></script>
     <script src="js/custom.js"></script>
+	<script>
+		var slider = document.getElementById("myRange");
+		var output = document.getElementById("rangeValue");
+		output.innerHTML = slider.value; // Display the default slider value
+	
+		// Update the current slider value (each time you drag the slider handle)
+		slider.oninput = function() {
+			output.innerHTML = "Value: " + this.value;
+		}
+	</script>
 </body>
 </html>
 

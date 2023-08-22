@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->unsignedBigInteger("movie");
-            $table->foreignId("movie")->constrained('id')->on("movies")->onDelete('cascade');
+            $table->renameColumn('movie', 'movie_id');
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('posts', function (Blueprint $table) {
+            $table->renameColumn('movie_id', 'movie');
+        });
     }
 };

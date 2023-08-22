@@ -10,7 +10,7 @@
                   <img src="images/{{$movie->image_url}}" class="img-fluid rounded mx-auto d-block" >
               </div>
               <div class="card-body">
-                  <a href="">
+                  <a href="moviedetail/{{$movie->id}}">
                       <h4 class="card-title text-center">{{$movie->title}}</h4>
                   </a>
               </div>
@@ -22,10 +22,10 @@
           <div class="col-md-3">
               <div class="card" style="height: 580px">
                   <div class="card-img">
-                      <img src="images/{{$movie->image_url}}" class="img-fluid rounded mx-auto d-block" >
+                      <img src="images/{{$movie->image_url}}" class="img-fluid rounded mx-auto d-block">
                   </div>
                   <div class="card-body">
-                      <a href="">
+                      <a href="moviedetail/{{$movie->id}}">
                           <h4 class="card-title text-center">{{$movie->title}}</h4>
                       </a>
                   </div>

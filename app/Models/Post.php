@@ -18,7 +18,7 @@ class Post extends Model
     ];
 
     public function movie(){
-        return $this->belongsTo(Movie::class);
+        return $this->belongsTo(Movie::class, 'movie');
     }
 
     public function User(){
