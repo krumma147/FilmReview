@@ -27,7 +27,7 @@
 	<link rel="stylesheet" href="css/flatpickr.min.css">
 
 
-	<title>Blogy &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
+	<title>Home Page</title>
 </head>
 <style>
     @media (max-width: 767px) {

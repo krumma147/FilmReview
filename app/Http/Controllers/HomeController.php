@@ -32,13 +32,20 @@ class HomeController extends Controller
         }
     }
 
-    public function moviePage(){
+    public function moviePage(Request $request){
+        $searchKey = $request->input('searchKey');
+        if($searchKey){
+            $query = Movie::query();
+            $query->where('title', 'like', '%' . $searchKey . '%');
+            $movies = $query; // 10 movies per page
+        }else{
+            $movies = $this->getAllMovies();
+        }
         $topMovies = $this->getMovies();
         $posts = $this->getPosts();
         $authors = $this->getAuthors();
         $recentMovies = $this->getRecentMovies();
         $categories = $this->getCategories();
-        $movies = $this->getAllMovies();
         return view('MoviePage', compact('topMovies', 'authors', 'recentMovies', 'categories', 'movies'));
     }
 
@@ -72,7 +79,7 @@ class HomeController extends Controller
         $post->content = $request->content;
         $post->uploadDate = Carbon::now();
         $post->rating = $request->rating;
-        $post->movie = $movieId;
+        $post->movie_id = $movieId;
         $post->author = Auth::user()->id;
         $post->save();
         return redirect('/moviedetail/'.$movieId);

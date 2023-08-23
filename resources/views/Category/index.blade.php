@@ -24,9 +24,9 @@
         <div class="card-header">
             <div class="card-tools">
                 <div class="input-group input-group" style="width: 250px;">
-                    <form action="" method="POST">
+                    <form class="d-flex" action="{{route('categories.index')}}" method="GET">
                         @csrf
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <input type="text" name="searchKey" class="form-control float-right" placeholder="Search">
                 
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-default">

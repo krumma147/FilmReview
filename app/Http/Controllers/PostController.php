@@ -15,8 +15,15 @@ class PostController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $searchKey = $request->input('searchKey');
+        if($searchKey){
+            $query = Post::query();
+            $query->where('content', 'like', '%' . $searchKey . '%');
+            $posts = $query->paginate(10); // 10 movies per page
+        return view('Post.index', compact('posts'));
+        }
         $posts = Post::paginate(10); // 10 movies per page
         return view("Post.index", compact('posts'));
     }

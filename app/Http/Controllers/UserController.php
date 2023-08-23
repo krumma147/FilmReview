@@ -15,10 +15,17 @@ class UserController extends Controller
         $this->middleware('checkrole');
     }
     
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
-        return view("User/index", compact('users'));
+        $searchKey = $request->input('searchKey');
+        if($searchKey){
+            $query = User::query();
+            $query->where('name', 'like', '%' . $searchKey . '%');
+            $users = $query->paginate(10); // 10 movies per page
+        return view('User.index', compact('users'));
+        }
+        $users = User::paginate(10); // 10 movies per page
+        return view("User.index", compact('users'));
     }
 
     /**

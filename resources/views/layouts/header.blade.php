@@ -13,12 +13,18 @@
 			<div class="site-navigation">
 				<div class="row g-0 align-items-center">
 					<div class="col-2">
-						<a href="/" class="logo m-0 float-start">Blogy<span class="text-primary">.</span></a>
+						<a href="/" class="logo m-0 float-start">Movie Review<span class="text-primary">.</span></a>
 					</div>
 					<div class="col-8 text-center">
-						<form action="#" class="search-form d-inline-block d-lg-none">
-							<input type="text" class="form-control" placeholder="Search...">
-							<span class="bi-search"></span>
+						<form class="search-form d-inline-block d-lg-none" action="{{ route('moviehome')}}" method="GET">
+							@csrf
+							<input type="text" name="searchKey" class="form-control" placeholder="Search...">
+					
+							<div class="input-group-append">
+								<button type="submit" class="btn btn-default">
+								<i class="fas fa-search"></i>
+								</button>
+							</div>
 						</form>
 
 						<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">

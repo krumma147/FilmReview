@@ -15,9 +15,16 @@ class CategoryController extends Controller
         $this->middleware('checkrole');
     }
     
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::paginate(10);
+        $searchKey = $request->input('searchKey');
+        if($searchKey){
+            $query = Category::query();
+            $query->where('name', 'like', '%' . $searchKey . '%');
+            $categories = $query->paginate(10); // 10 movies per page
+        return view('Category.index', compact('categories'));
+        }
+        $categories = Category::paginate(10); // 10 movies per page
         return view('Category.index', compact('categories'));
     }
 

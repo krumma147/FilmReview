@@ -12,29 +12,22 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                    <a class='nav-link p-3' href="/home">
+                        Home Page
+                    </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('movies.index') }}" :active="request()->routeIs('movies.index')">
-                        {{ __('Movies') }}
-                    </x-nav-link>
+                    <a class='nav-link p-3' href="/moviehome">
+                        Movie Page
+                    </a>
                 </div>
 
-                <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('categories.index') }}" :active="request()->routeIs('categories.index')">
-                        {{ __('Categories') }}
-                    </x-nav-link>
-                </div>
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                        {{ __('Users') }}
-                    </x-nav-link>
+                    <a class='nav-link p-3 {{Auth::user()->userType==2 ? '' : 'disable'}}' href="/movies" >
+                        Admin Page
+                    </a>
                 </div>
             </div>
 

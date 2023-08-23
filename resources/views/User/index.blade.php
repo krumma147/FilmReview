@@ -26,14 +26,17 @@
 			<div class="card-header">
 				<div class="card-tools">
 					<div class="input-group input-group" style="width: 250px;">
-						<input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-					
-						<div class="input-group-append">
-							<button type="submit" class="btn btn-default">
-							<i class="fas fa-search"></i>
-							</button>
-						</div>
-						</div>
+						<form class="d-flex" action="{{route('users.index')}}" method="GET">
+                            @csrf
+                            <input type="text" name="searchKey" class="form-control float-right" placeholder="Search">
+                    
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+					</div>
 				</div>
 			</div>
 			<div class="card-body table-responsive p-0">								

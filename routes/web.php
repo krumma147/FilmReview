@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'login'])->middleware("auth");
 Route::get('/about', [HomeController::class, 'about']);
-Route::get('/moviehome', [HomeController::class, 'moviePage'])->middleware("auth");
+Route::get('/moviehome', [HomeController::class, 'moviePage'])->middleware("auth")->name('moviehome');;
 Route::get('/moviedetail/{id}', [HomeController::class, 'MovieDetail']);
 Route::get('/filter-movies', [HomeController::class, 'filterMovies'])->name('filterMovies');
 Route::post('/createReview/{id}', [HomeController::class, 'createReview'])->name('createReview');

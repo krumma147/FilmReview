@@ -13,12 +13,12 @@ class Post extends Model
         'content',
         'dayUpload',
         'rating',
-        'movie',
+        'movie_id',
         'author'
     ];
 
     public function movie(){
-        return $this->belongsTo(Movie::class, 'movie');
+        return $this->belongsTo(Movie::class);
     }
 
     public function User(){

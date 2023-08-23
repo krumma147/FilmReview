@@ -10,7 +10,6 @@
             </div>
             <div class="col-sm-6 text-right">
                 <a href="/movies/create" class="btn btn-primary">New Film</a>
-                {{-- <input type="submit" value="Create" class="btn btn-primary" onclick="return window.location.href='/movies/create'" ></input> --}}
             </div>
         </div>
     </div>
