@@ -59,12 +59,15 @@
 				
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 											<!-- Account Management -->
-											@if(Auth::user()->userType==2)
+											@if(Auth::user()->userType===2)
 											<li>
 												<a class="dropdown-item" href="/movies">{{ __('Admin Page') }}</a>	
 											<li>
+											<li>
+												<a class="dropdown-item" href="/testing">Testing Page</a>	
+											<li>
 											@endif
-				
+												
 											<a class="dropdown-item" href="{{ route('profile.show') }}">
 												{{ __('Profile') }}
 											</a>

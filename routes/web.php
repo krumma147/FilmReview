@@ -27,7 +27,7 @@ Route::get('/moviehome', [HomeController::class, 'moviePage'])->middleware("auth
 Route::get('/moviedetail/{id}', [HomeController::class, 'MovieDetail']);
 Route::get('/filter-movies', [HomeController::class, 'filterMovies'])->name('filterMovies');
 Route::post('/createReview/{id}', [HomeController::class, 'createReview'])->name('createReview');
-Route::post('/testing', [HomeController::class, 'test'])->name('test');
+Route::get('/testing', [HomeController::class, 'test'])->name('test');
 
 Route::resources([
         'users' => UserController::class,
@@ -35,11 +35,6 @@ Route::resources([
         'categories' => CategoryController::class,
         'posts' => PostController::class,
 ]);
-
-// Route::middleware(['auth', 'checkrole:admin'])->group(function () {
-//     Route::resource('movies', MovieController::class);
-//     // Other admin-only routes
-// });
 
 Route::middleware([
     'auth:sanctum',

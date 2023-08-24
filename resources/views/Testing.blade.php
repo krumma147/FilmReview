@@ -62,8 +62,24 @@
             <textarea class="form-control" id="overview" name="overview" rows="4" required></textarea>
         </div>
         <div class="mb-3">
+            <label for="language" class="form-label">Language</label>
+            <input type="text" class="form-control" id="overview" name="language" rows="4" required></input>
+        </div>
+        <div class="mb-3">
             <label for="release_date" class="form-label">Release Date</label>
             <input type="date" class="form-control" id="release_date" name="release_date" required>
+        </div>
+        <div class="mb-2">
+            <label for="status" class="form-label">Status:</label>
+            <div class="form-check form-check-inline" role="group" aria-label="Basic checkbox toggle button group">
+                <input type="radio" class="form-check-input" name="status" value="1" autocomplete="off">
+                <label class="form-check-label" for="btncheck1">Released</label>
+            </div>
+                                                
+            <div class="form-check form-check-inline" role="group" aria-label="Basic checkbox toggle button group">
+                <input type="radio" class="form-check-input" name="status" value="0" autocomplete="off" checked>
+                <label class="form-check-label" for="btncheck2">Unreleased</label>
+            </div>
         </div>
         <div class="mb-3">
             <label for="rating" class="form-label">Rating</label>

@@ -25,6 +25,9 @@
                 <h4 class="mb-0 text-center"><strong>{{ Auth::user()->name }}</strong></h4>
                 <div class="dropdown-divider"></div>
                 <!-- Account Management -->
+                <a class="dropdown-item" href="{{ route('test') }}">
+                    <i class="fas fa-user-cog mr-2"></i> {{ __('API Testing') }}
+                </a>
                 <a class="dropdown-item" href="{{ route('profile.show') }}">
                     <i class="fas fa-user-cog mr-2"></i> {{ __('Manage Account') }}
                 </a>

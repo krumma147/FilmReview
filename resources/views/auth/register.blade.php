@@ -19,6 +19,19 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>
 
+            <div class="mt-4 d-flex">
+                <label for="userType" class="form-label">Role:</label>
+                <div class="form-check" role="group" aria-label="Basic checkbox toggle button group">
+                    <input type="radio" class="form-check-input" name="userType" value="1" autocomplete="off" checked>
+                    <label class="form-check-label" for="btncheck1">User</label>
+                </div>
+                                                
+                <div class="form-check" role="group" aria-label="Basic checkbox toggle button group">
+                    <input type="radio" class="form-check-input" name="userType" value="2" autocomplete="off">
+                    <label class="form-check-label" for="btncheck2">Admin</label>
+                </div>
+            </div>
+
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
