@@ -19,3 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('movies', 'App\Http\Controllers\api\MovieController@index');
+Route::post('/movies', [MovieController::class, 'store']);
+Route::get('categories', 'App\Http\Controllers\api\CategoryController@index');

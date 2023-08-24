@@ -27,6 +27,7 @@ Route::get('/moviehome', [HomeController::class, 'moviePage'])->middleware("auth
 Route::get('/moviedetail/{id}', [HomeController::class, 'MovieDetail']);
 Route::get('/filter-movies', [HomeController::class, 'filterMovies'])->name('filterMovies');
 Route::post('/createReview/{id}', [HomeController::class, 'createReview'])->name('createReview');
+Route::post('/testing', [HomeController::class, 'test'])->name('test');
 
 Route::resources([
         'users' => UserController::class,

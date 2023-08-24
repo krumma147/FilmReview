@@ -73,6 +73,11 @@ class HomeController extends Controller
     return view('MoviePage', compact('filteredMovies','categories', 'topMovies'));
     }
 
+    public function test()
+    {
+        return view('Testing');
+    }
+
 
     public function createReview(Request $request, string $movieId){
         $post = new Post();

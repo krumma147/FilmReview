@@ -16,11 +16,8 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // if (Auth()->user()->userType != 2) {
-        //     return redirect('/login');
-        // }
         if (Auth::check() && Auth::user()->userType != 2) {
-            return redirect('/home'); // Redirect to the homepage or wherever you want
+            return redirect('/home');
         }
     
         return $next($request);

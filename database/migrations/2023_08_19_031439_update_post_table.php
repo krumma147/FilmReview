@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->unsignedBigInteger("movie");
-            $table->foreignId("movie")->constrained('id')->on("movies")->onDelete('cascade');
+            $table->unsignedBigInteger("movie_id");
+            $table->foreign("movie_id")->references('id')->on("movies")->onDelete('cascade');
         });
     }
 
